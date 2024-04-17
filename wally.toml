@@ -1,6 +1,6 @@
 [package]
-name = "bloomy/device"
-description = "Simple way to know which device type player currently on."
+name = "shards-tech/device"
+description = "Simple way to know which device type player currently on. https://github.com/shards-tech/device.git"
 authors = ["Bloomy <dequeyuri@gmail.com>"]
 
 version = "0.1.0"
@@ -8,5 +8,4 @@ registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
 exclude = ["**"]
-include = ["init.lua"]
-
+include = ["init.lua", "wally.toml"]

@@ -63,7 +63,7 @@ Device.which({
     end,
 
     Phone = function()
-        -- Do phone related stuff.
+        -- Do phone related stuff, but its unreachable on Computer environment.
     end,
 })
 ```
