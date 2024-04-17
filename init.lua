@@ -82,7 +82,8 @@ function Device.on(DeviceType: DeviceTypes, Fn: () -> ())
 end
 
 --[=[
-
+    Multiple handling for DeviceTypes.
+    
     For example:
     ```lua
     -- Environment: Computer
