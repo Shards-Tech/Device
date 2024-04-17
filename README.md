@@ -5,7 +5,7 @@ Simple way to know which device type player currently on.
 Install using wally: 
 
 ```toml
-Device = "Shards-Tech/Device@0.1.0"
+Device = "shards-tech/device@0.1.0"
 ```
 
 ## 📃 Documentation
