@@ -24,7 +24,7 @@ local Device = {}
     For example:
     ```lua
     -- Environemnt: Computer
-    
+
     local DeviceType = Device.get() -- Computer
     ```
 ]=]
@@ -87,9 +87,11 @@ end
     ```lua
     -- Environment: Computer
 
-    Device.which {
+    local isComputer = Device.which {
         Computer = function() 
             -- Do stuff on the computer end.
+            
+            return true -- Not necessary.
         end,
 
         Phone = function()
@@ -103,13 +105,15 @@ end
     ```
 ]=]
 function Device.which(Extension: DeviceWhich)
+	local Returned: any
+
 	for DeviceType, Fn in pairs(Extension) do
 		if Device.is(DeviceType) then
-			return Fn() :: any
+			Returned = Fn() :: any
 		end
 	end
-end
 
-Device.
+	return Returned
+end
 
 return Device
