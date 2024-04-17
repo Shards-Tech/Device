@@ -11,6 +11,11 @@ type DeviceWhich = {
 	[DeviceTypes]: () -> (),
 }
 
+--[=[
+    Simple way to know which device type player currently on.
+
+    Documentation: https://www.github.com/shards-tech/device.git
+]=]
 local Device = {}
 
 --[=[
@@ -18,6 +23,8 @@ local Device = {}
 
     For example:
     ```lua
+    -- Environemnt: Computer
+    
     local DeviceType = Device.get() -- Computer
     ```
 ]=]
@@ -44,7 +51,9 @@ end
 
     For example:
     ```lua
-    local isComputer = Device.is("Computer") -- true
+    -- Environment: Phone
+
+    local isComputer = Device.is("Computer") -- False
     ```
 ]=]
 function Device.is(DeviceType: DeviceTypes)
@@ -57,6 +66,8 @@ end
 
     For example:
     ```lua
+    -- Environment: Computer
+
     Device.on("Computer", function() 
         -- Stuff going on specifically for Computer Devices.
     end) 
@@ -74,17 +85,19 @@ end
 
     For example:
     ```lua
+    -- Environment: Computer
+
     Device.which {
         Computer = function() 
             -- Do stuff on the computer end.
         end,
 
         Phone = function()
-            -- Do stuff in the phone end.
+            -- Do stuff in the phone end, unreachable.
         end,
 
         Tablet = function()
-            -- Do stuff in the tablet end.
+            -- Do stuff in the tablet end, unreachable.
         end,
     }
     ```
@@ -92,9 +105,11 @@ end
 function Device.which(Extension: DeviceWhich)
 	for DeviceType, Fn in pairs(Extension) do
 		if Device.is(DeviceType) then
-			return Fn()
+			return Fn() :: any
 		end
 	end
 end
+
+Device.
 
 return Device
