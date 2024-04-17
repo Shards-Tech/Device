@@ -6,7 +6,7 @@ local GuiService = game:GetService("GuiService")
 local MAX_PHONE_SCREEN_SIZE_Y = 600
 
 -- Module --
-export type DeviceTypes = "Console" | "Tablet" | "Phone" | "VR" | "Computer"
+export type DeviceTypes = "Computer" | "Tablet" | "Phone" | "Console" | "VR"
 type DeviceWhich = {
 	[DeviceTypes]: () -> (),
 }
