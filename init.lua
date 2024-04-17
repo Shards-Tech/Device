@@ -92,7 +92,7 @@ end
 function Device.which(Extension: DeviceWhich)
 	for DeviceType, Fn in pairs(Extension) do
 		if Device.is(DeviceType) then
-			Fn()
+			return Fn()
 		end
 	end
 end
