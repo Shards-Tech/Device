@@ -87,7 +87,7 @@ end
     ```lua
     -- Environment: Computer
 
-    local isComputer = Device.which {
+    local isComputer = Device.which({
         Computer = function() 
             -- Do stuff on the computer end.
             
@@ -101,7 +101,7 @@ end
         Tablet = function()
             -- Do stuff in the tablet end, unreachable.
         end,
-    }
+    })
     ```
 ]=]
 function Device.which(Extension: DeviceWhich)
