@@ -1,0 +1,12 @@
+[package]
+name = "bloomy/device"
+description = "Simple way to know which device type player currently on."
+authors = ["Bloomy <dequeyuri@gmail.com>"]
+
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+exclude = ["**"]
+include = ["init.lua"]
+
