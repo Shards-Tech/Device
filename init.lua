@@ -5,23 +5,28 @@ local GuiService = game:GetService("GuiService")
 -- Constants --
 local MAX_PHONE_SCREEN_SIZE_Y = 600
 
--- Module --
+-- Types --
 export type DeviceTypes = "Computer" | "Tablet" | "Phone" | "Console" | "VR"
 type DeviceWhich = {
 	[DeviceTypes]: () -> (),
 }
 
+-- Module --
 --[=[
     Simple way to know which device type player currently on.
 
     Documentation: https://www.github.com/shards-tech/device.git
 ]=]
-local Device = {}
+local Device = {
+    DeviceTypes = {"Computer", "Tablet", "Phone", "Console", "VR"}
+}
 
 --[=[
     Returns the device type its currently on.
 
-    For example:
+    ---
+    Example:
+
     ```lua
     -- Environemnt: Computer
 
@@ -48,8 +53,10 @@ end
 
 --[=[
     Returns true or false if the given the DeviceType is matching.
+    
+    ---
+    Example:
 
-    For example:
     ```lua
     -- Environment: Phone
 
@@ -57,14 +64,18 @@ end
     ```
 ]=]
 function Device.is(DeviceType: DeviceTypes)
+    assert(typeof(table.find(Device.DeviceTypes, DeviceType)) == typeof(0), DeviceType .. "is not a DeviceType.")
+
 	return Device.get() == DeviceType
 end
 
 --[=[
     Run the callback function when the given DeviceType match with the current
     DeviceType.
+    
+    ---
+    Example:
 
-    For example:
     ```lua
     -- Environment: Computer
 
@@ -74,6 +85,8 @@ end
     ```
 ]=]
 function Device.on(DeviceType: DeviceTypes, Fn: () -> ())
+    assert(typeof(table.find(Device.DeviceTypes, DeviceType)) == typeof(0), DeviceType .. "is not a DeviceType.")
+
 	if Device.is(DeviceType) then
 		Fn()
 	end
@@ -84,7 +97,9 @@ end
 --[=[
     Multiple handling for DeviceTypes.
     
-    For example:
+    ---
+    Example:
+    
     ```lua
     -- Environment: Computer
 
@@ -109,7 +124,9 @@ function Device.which(Extension: DeviceWhich)
 	local Returned: any
 
 	for DeviceType, Fn in pairs(Extension) do
-		if Device.is(DeviceType) then
+        assert(typeof(table.find(Device.DeviceTypes, DeviceType)) == typeof(0), DeviceType .. "is not a DeviceType.")
+
+        if Device.is(DeviceType) then
 			Returned = Fn() :: any
 		end
 	end
