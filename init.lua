@@ -13,9 +13,7 @@ type DeviceWhich = {
 
 -- Module --
 --[=[
-    Simple way to know which device type player currently on.
-
-    Documentation: https://www.github.com/shards-tech/device.git
+    Define the Device class.
 ]=]
 local Device = {
     DeviceTypes = {"Computer", "Tablet", "Phone", "Console", "VR"}
